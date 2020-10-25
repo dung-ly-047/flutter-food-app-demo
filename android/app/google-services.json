@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "330236442296",
+    "firebase_url": "https://food-stall-f9401.firebaseio.com",
+    "project_id": "food-stall-f9401",
+    "storage_bucket": "food-stall-f9401.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330236442296:android:262323209d78e75bdb264d",
+        "android_client_info": {
+          "package_name": "com.dly.foodstall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330236442296-98j13jhgsqegerd9a6a00sfbkarfvk4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7zThuHXz8ry0AyDiG5dPl1Kq_4hX9dso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330236442296-98j13jhgsqegerd9a6a00sfbkarfvk4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
