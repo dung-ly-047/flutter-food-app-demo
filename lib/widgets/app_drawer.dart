@@ -4,14 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
-  final auth_email = FirebaseAuth.instance.currentUser.email;
+  final authEmail = FirebaseAuth.instance.currentUser.email;
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: [
           AppBar(
-            title: Text('Hello $auth_email!'),
+            title: Text('Hello $authEmail!'),
             automaticallyImplyLeading: false,
           ),
           Divider(),
