@@ -34,7 +34,12 @@ class FoodDetailScreen extends StatelessWidget {
           children: [
             Hero(
               tag: args['id'],
-              child: Image.network(args['imageUrl']),
+              child: Image.network(
+                args['imageUrl'],
+                fit: BoxFit.cover,
+                height: 400,
+                width: double.infinity,
+              ),
             ),
             Expanded(
               child: Column(

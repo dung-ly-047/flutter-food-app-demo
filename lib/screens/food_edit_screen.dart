@@ -38,6 +38,7 @@ class _FoodEditScreenState extends State<FoodEditScreen> {
                       child: Text('No food added.'),
                     )
                   : ListView.builder(
+                      physics: BouncingScrollPhysics(),
                       itemCount: foodDocs.length,
                       itemBuilder: (ctx, index) => FoodEditingWid(
                         imageUrl: foodDocs[index]['imageUrl'],

@@ -40,8 +40,10 @@ class CategoriesScreen extends StatelessWidget {
             }
             final foodDocs = snapshot.data.docs;
             return foodDocs.length == 0
-                ? Center(child: Text('Sorry! There are no food available.'))
+                ? const Center(
+                    child: Text('Sorry! There are no food available.'))
                 : ListView.builder(
+                    physics: BouncingScrollPhysics(),
                     itemCount: foodDocs.length,
                     itemBuilder: (ctx, index) {
                       return FoodItemWid(

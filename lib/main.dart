@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.blue,
         fontFamily: 'Grandstander',
       ),
+      debugShowCheckedModeBanner: false,
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (ctx, userSnapshot) {
