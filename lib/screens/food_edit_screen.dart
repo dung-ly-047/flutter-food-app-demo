@@ -17,12 +17,6 @@ class _FoodEditScreenState extends State<FoodEditScreen> {
       child: Scaffold(
           appBar: AppBar(
             title: Text('Edit Food'),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.check),
-                onPressed: null,
-              ),
-            ],
           ),
           body: FutureBuilder(
             future: FirebaseFirestore.instance.collection('food').get(),

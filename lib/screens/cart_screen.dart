@@ -29,7 +29,6 @@ class _CartScreenState extends State<CartScreen> {
       snapshot.docs.forEach((element) {
         totalPrice += element['price'] * element['quantity'];
       });
-      print(totalPrice);
       setState(() {
         _totalPrice = totalPrice;
       });
@@ -59,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Total',
                       style: TextStyle(
                         fontSize: 20,
@@ -81,7 +80,7 @@ class _CartScreenState extends State<CartScreen> {
                     FlatButton(
                       textColor: Colors.blue,
                       onPressed: () {},
-                      child: Text('Order Now'),
+                      child: const Text('Order Now'),
                     )
                   ],
                 ),

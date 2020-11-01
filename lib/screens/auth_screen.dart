@@ -103,7 +103,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 children: [
                   Flexible(
                     fit: FlexFit.loose,
-                    child: Text(
+                    child: const Text(
                       'Food Stall',
                       style: TextStyle(
                         fontSize: 60,
