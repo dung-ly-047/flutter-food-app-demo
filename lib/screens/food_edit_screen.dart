@@ -18,8 +18,8 @@ class _FoodEditScreenState extends State<FoodEditScreen> {
           appBar: AppBar(
             title: Text('Edit Food'),
           ),
-          body: FutureBuilder(
-            future: FirebaseFirestore.instance.collection('food').get(),
+          body: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('food').snapshots(),
             builder: (ctx, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(

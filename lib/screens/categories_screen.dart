@@ -30,8 +30,8 @@ class CategoriesScreen extends StatelessWidget {
           ],
         ),
         drawer: AppDrawer(),
-        body: FutureBuilder(
-          future: db.collection('food').get(),
+        body: StreamBuilder(
+          stream: db.collection('food').snapshots(),
           builder: (ctx, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
