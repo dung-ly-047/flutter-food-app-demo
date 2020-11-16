@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class FoodDetailScreen extends StatelessWidget {
   static const routeName = '/details';
+  final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class FoodDetailScreen extends StatelessWidget {
         .collection('cart');
 
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         title: Text(args['title']),
         actions: [
@@ -58,32 +60,36 @@ class FoodDetailScreen extends StatelessWidget {
                     height: 20,
                   ),
                   Text(args['description']),
+                  RaisedButton(
+                    child: Text('Add to cart'),
+                    onPressed: () {
+                      final cartAddedItem = userCart.doc(args['id']);
+                      cartAddedItem.get().then((value) {
+                        if (value.exists) {
+                          cartAddedItem.update({
+                            'quantity': value.get('quantity') + 1,
+                          });
+                        } else {
+                          cartAddedItem.set({
+                            'title': args['title'],
+                            'quantity': 1,
+                            'price': args['price']
+                          });
+                        }
+                      });
+                      _key.currentState.removeCurrentSnackBar();
+                      _key.currentState.showSnackBar(SnackBar(
+                        content: Text("Added to cart"),
+                        duration: Duration(milliseconds: 500),
+                      ));
+                    },
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton: RaisedButton(
-        child: Text('Add to cart'),
-        onPressed: () {
-          final cartAddedItem = userCart.doc(args['id']);
-          cartAddedItem.get().then((value) {
-            if (value.exists) {
-              cartAddedItem.update({
-                'quantity': value.get('quantity') + 1,
-              });
-            } else {
-              cartAddedItem.set({
-                'title': args['title'],
-                'quantity': 1,
-                'price': args['price']
-              });
-            }
-          });
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -26,6 +24,9 @@ class _AuthFormState extends State<AuthForm>
   var _userName = '';
   var _userPassword = '';
 
+  AnimationController _controller;
+  Animation<double> _opacityAnimation;
+
   void _trySubmit() {
     final isValid = _formKey.currentState.validate();
     FocusScope.of(context).unfocus();
@@ -37,6 +38,23 @@ class _AuthFormState extends State<AuthForm>
       _userPassword.trim(),
       _isLogin,
       context,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 300,
+      ),
+    );
+    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeIn,
+      ),
     );
   }
 
@@ -73,19 +91,22 @@ class _AuthFormState extends State<AuthForm>
                       },
                     ),
                     if (!_isLogin)
-                      TextFormField(
-                        key: ValueKey('username'),
-                        validator: (value) {
-                          if (value.isEmpty || value.length < 4)
-                            return 'Please enter at least 4 characters.';
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Username',
+                      FadeTransition(
+                        opacity: _opacityAnimation,
+                        child: TextFormField(
+                          key: ValueKey('username'),
+                          validator: (value) {
+                            if (value.isEmpty || value.length < 4)
+                              return 'Please enter at least 4 characters.';
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Username',
+                          ),
+                          onSaved: (value) {
+                            _userName = value;
+                          },
                         ),
-                        onSaved: (value) {
-                          _userName = value;
-                        },
                       ),
                     TextFormField(
                       key: ValueKey('password'),
@@ -112,6 +133,9 @@ class _AuthFormState extends State<AuthForm>
                     FlatButton(
                       textColor: Colors.blue,
                       onPressed: () {
+                        _isLogin
+                            ? _controller.forward()
+                            : _controller.reverse();
                         setState(() {
                           _isLogin = !_isLogin;
                         });

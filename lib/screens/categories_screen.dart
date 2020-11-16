@@ -57,6 +57,47 @@ class CategoriesScreen extends StatelessWidget {
                   );
           },
         ),
+        bottomNavigationBar: Container(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: Column(children: [
+                  Icon(
+                    Icons.shopping_bag,
+                    color: Colors.green,
+                    size: 32,
+                  ),
+                  Text(
+                    "Shop",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ]),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, CartScreen.routeName);
+                },
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.shopping_cart,
+                      color: Colors.green,
+                      size: 32,
+                    ),
+                    Text(
+                      "Cart",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

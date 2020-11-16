@@ -13,11 +13,3 @@ class FoodItem {
     @required this.title,
   });
 }
-
-class Food with ChangeNotifier {
-  List<FoodItem> _items = [];
-
-  List<FoodItem> get items {
-    return [..._items];
-  }
-}

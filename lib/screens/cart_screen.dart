@@ -89,6 +89,19 @@ class _CartScreenState extends State<CartScreen> {
             SizedBox(
               height: 10,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.arrow_left,
+                  color: Colors.red,
+                ),
+                Text(
+                  "Swipe Left to Delete",
+                  style: TextStyle(color: Colors.red),
+                ),
+              ],
+            ),
             Expanded(
               child: FutureBuilder(
                 future: userCart.get(),
